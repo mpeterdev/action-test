@@ -1,0 +1,16 @@
+name: Artifactory
+
+on: [workflow_dispatch]
+
+jobs:
+  artifactory_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create artifact
+        run: |
+          echo "test download" > an_artifact.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: an_artifact.txt
