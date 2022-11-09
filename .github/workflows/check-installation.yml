@@ -1,0 +1,16 @@
+name: Check installation
+
+on: [ workflow_dispatch ]
+
+jobs:
+  create_issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write 
+    steps:
+      - name: Check repo
+        run: |
+          curl \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/installation/repositories
